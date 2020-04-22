@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<report id="freight_shipping_order_report"
+				string="Shipping Order"
+				model="freight.operation"
+				name="scs_freight.freight_shipping_order"
+				file="scs_freight.freight_shipping_order"
+				report_type="qweb-pdf"/>
+
+	    <!-- Bill Payment Receipt Report -->
+	    <report id="bill_payment_receipt_details_report"
+	            model="freight.operation"
+	            string="Bill Payment Receipt"
+	            report_type="qweb-pdf"
+	            name="scs_freight.bill_payment_receipt_report"
+	            file="scs_freight.bill_payment_receipt_report"/>
+
+		<!-- Invoice Payment Receipt Report -->
+	    <report id="inv_payment_receipt_details_report"
+	            model="freight.operation"
+	            string="Invoice Payment Receipt"
+	            report_type="qweb-pdf"
+	            name="scs_freight.inv_payment_receipt_report"
+	            file="scs_freight.inv_payment_receipt_report"/>
+		</data>
+</odoo>

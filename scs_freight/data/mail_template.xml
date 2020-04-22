@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<!-- Mail Template for Clearance Agent -->
+		<record id="custom_clearence_agent" model="mail.template">
+			<field name="name">Custom Clearance Mail Template</field>
+			<field name="email_from">${user.company_id and user.company_id.email or user.partner_id and user.partner_id.email or ''}</field>
+			<field name="email_to">${object.agent_id and object.agent_id.email or ''}</field>
+			<field name="subject">Custom Clearance For Freight Operation</field>
+			<field name="model_id" ref="model_operation_custom"/>
+			<field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+                 <p>
+                    Hello <b>${object.agent_id and object.agent_id.name or ''} </b>,
+                 </p>
+                 <p>
+                    We need an Custom Clearance for us one Freight operation.
+                    Operation related Information and documents are bellow please find it. 
+                  </p>
+                      <p><b> Clearance Detail : </b></p>
+                        <table width="50%" border="1">
+                        	<tr>
+	                            <th>From </th>
+	                            <th>To,</th>
+	                            <th>Transport Type</th>
+	                        </tr>
+	                        <tr>
+	                        	<td>${object.operation_id.loading_port_id.name or ''}</td>
+	                        	<td>${object.operation_id.discharg_port_id.name or ''}</td>
+	                        	<td>${object.operation_id.transport}</td>
+	                        </tr>
+	                    </table>
+                    Thank You.
+                ]]></field>
+		</record>
+	</data>
+</odoo>

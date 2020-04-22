@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- freight.port tree view -->
+	<record id='ports_config_tree_view' model='ir.ui.view'>
+		<field name='name'>port.config.tree.view</field>
+		<field name='model'>freight.port</field>
+		<field name='arch' type='xml'>
+			<tree string='Ports'>
+				<field name="name"/>
+				<field name="code"/>
+				<field name="country_id"/>
+				<field name="state_id"/>
+				<field name="is_land"/>
+				<field name="is_ocean"/>
+				<field name="is_air"/>
+			</tree>
+		</field>
+	</record>
+	
+	<!-- freight.port form view -->
+	<record id="ports_config_form_view" model="ir.ui.view">
+		<field name="name">port.config.form.view</field>
+		<field name="model">freight.port</field>
+		<field name="arch" type="xml">
+			<form string="Ports">
+				<sheet>
+					<group>
+						<group>
+							<field name="name" required="1"/>
+							<field name="country_id"/>
+							<field name="is_land"/>
+							<field name="is_ocean"/>
+							<field name="is_air"/>
+						</group>
+						<group>
+							<field name="code" required="1"/>
+							<field name="state_id"/>
+							<field name="active"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- Action for freight.port -->
+	<record id="ports_config_action" model="ir.actions.act_window">
+        <field name="name">Ports</field>
+        <field name="res_model">freight.port</field>
+    <!--     <field name="view_type">form</field> -->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+	<!-- freight.vessels tree view -->
+	<record id="vessels_config_tree_view" model="ir.ui.view">
+		<field name="name">vessels.config.tree.view</field>
+		<field name="model">freight.vessels</field>
+		<field name="arch" type="xml">
+			<tree string="Vessels">
+				<field name="code"/>
+				<field name="name"/>
+				<field name="country_id"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- freight.vessels form view -->
+	<record id="vessels_config_form_view" model="ir.ui.view">
+		<field name="name">vessels.config.form.view</field>
+		<field name="model">freight.vessels</field>
+		<field name="arch" type="xml">
+			<form string="Vessels">
+				<sheet>
+					<group>
+						<group>
+							<field name="name" required="1"/>
+							<field name="country_id"/>
+							<field name="transport"/>
+						</group>
+						<group>
+							<field name="code"/>
+							<field name="active"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Notes">
+							<field name="note" placeholder="Notes...."
+								nolable="1"/>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- Vessels Action -->
+	<record id="vessels_config_action" model="ir.actions.act_window">
+        <field name="name">Vessels</field>
+        <field name="res_model">freight.vessels</field>
+        <!-- <field name="view_type">form</field> -->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    	<!-- freight.airline tree view -->
+	<record id="airline_config_tree_view" model="ir.ui.view">
+		<field name="name">airline.config.tree.view</field>
+		<field name="model">freight.airline</field>
+		<field name="arch" type='xml'>
+			<tree string="Airlines">
+				<field name="code"/>
+				<field name="name"/>
+				<field name="country_id"/>
+				<field name="icao"/>
+				<field name="active"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- freight.airline form view -->
+	<record id="airline_config_form_view" model="ir.ui.view">
+		<field name="name">airline.config.form.view</field>
+		<field name="model">freight.airline</field>
+		<field name="arch" type="xml">
+			<form string="Airline">
+				<sheet>
+					<group>
+						<group>
+							<field name="name" required="1"/>
+							<field name="country_id"/>
+							<field name="active"/>
+						</group>
+						<group>
+							<field name="code"/>
+							<field name="icao"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- Airline Action -->
+	<record id="airline_config_action" model="ir.actions.act_window">
+        <field name="name">Airlines</field>
+        <field name="res_model">freight.airline</field>
+        <!-- <field name="view_type">form</field> -->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+	<!-- Container tree view -->
+	<record id="container_config_tree_view" model="ir.ui.view">
+		<field name="name">container.config.tree.view</field>
+		<field name="model">freight.container</field>
+		<field name="arch" type="xml">
+			<tree string="Container">
+				<field name="name"/>
+				<field name="size"/>
+				<field name="size_uom_id"/>
+				<field name="volume"/>
+				<field name="weight"/>
+				<field name="code"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Container form view -->
+	<record id="container_config_form_view" model="ir.ui.view">
+		<field name="name">container.config.form.view</field>
+		<field name="model">freight.container</field>
+		<field name="arch" type="xml">
+			<form string="Container">
+				<header>
+					<field name="state" nolable="1" widget="statusbar"/>
+				</header>
+				<sheet>
+					<group>
+						<group>
+							<field name="name" required="1"/>
+							<field name="size"/>
+							<field name="weight" placeholder="Enter Weight in KG." required="1"/>
+							<field name="is_container"/>
+						</group>
+						<group>
+							<field name="code"/>
+							<field name="size_uom_id"/>
+							<field name="volume" placeholder="Enter Volume in M3." required="1"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	
+	<!-- Container Action -->
+	<record id="container_config_action" model="ir.actions.act_window">
+        <field name="name">Containers</field>
+        <field name="res_model">freight.container</field>
+       <!--  <field name="view_type">form</field> -->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- freight.move.type tree view -->
+	<!-- <record id='move_type_config_tree_view' model='ir.ui.view'>
+		<field name='name'>move.type.config.tree.view</field>
+		<field name='model'>freight.move.type</field>
+		<field name='arch' type='xml'>
+			<tree string='Move Types' editable="bottom">
+				<field name="name" required="1"/>
+				<field name="code"/>
+				<field name="active"/>
+			</tree>
+		</field>
+	</record> -->
+	
+	<!-- freight.move.type form view -->
+	<!-- <record id="move_type_config_form_view" model="ir.ui.view">
+		<field name="name">move.type.config.form.view</field>
+		<field name="model">freight.move.type</field>
+		<field name="arch" type="xml">
+			<form string="Move Types">
+				<sheet>
+					<group>
+						<group>
+							<field name="name" required="1"/>
+							<field name="active"/>
+						</group>
+						<group>
+							<field name="code" required="1"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record> -->
+
+	<!-- Action for freight.move.type -->
+	<!-- <record id="move_type_config_action" model="ir.actions.act_window">
+        <field name="name">Move Types</field>
+        <field name="res_model">freight.move.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record> -->
+
+    <!-- operation.price.list tree view -->
+	<record id='operation_price_list_tree_view' model='ir.ui.view'>
+		<field name='name'>operation.price.list.tree.view</field>
+		<field name='model'>operation.price.list</field>
+		<field name='arch' type='xml'>
+			<tree string='Price Listing'>
+				<field name="name"/>
+				<field name="volume_price"/>
+				<field name="weight_price"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- operation.price.list form view -->
+	<record id='operation_price_list_form_view' model='ir.ui.view'>
+		<field name='name'>operation.price.list.form.view</field>
+		<field name='model'>operation.price.list</field>
+		<field name='arch' type='xml'>
+			<form string='Price Listing'>
+				<sheet>
+					<div colspan="4">
+						<label for="name" string="Name"/>
+						<h2><field name="name" required="1"/></h2>
+					</div>
+					<group>
+						<group>
+							<field name="volume_price"/>
+						</group>
+						<group>
+							<field name="weight_price"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- Action for operation.price.list -->
+	<record id="action_operation_price_list" model="ir.actions.act_window">
+		<field name="name">Pricing List</field>
+		<field name="res_model">operation.price.list</field>
+		<field name="view_mode">tree,form</field>
+		<!-- <field name="view_type">form</field> -->
+	</record>
+
+	<menuitem id="main_menu_freight_config" 
+    		  name="Configuration"
+    		  parent="root_menu_freight"
+    		  sequence="10"
+    		  groups="freight_operation_admin"/>
+
+    <!-- Port Menu -->
+    <menuitem id="ports_menu"
+     		  name="Ports" 
+     		  parent="main_menu_freight_config"
+     		  action="ports_config_action"
+     		  sequence="1"/>
+
+    <!-- Vessels Menu -->
+    <menuitem id="vessels_menu"
+     		  name="Vessels" 
+     		  parent="main_menu_freight_config"
+     		  action="vessels_config_action"
+     		  sequence="2"
+     		  groups="freight_operation_admin"/>
+
+    <!-- Airlines Menu -->
+    <menuitem id="airline_menu"
+    		  name="Airlines" 
+    		  parent="main_menu_freight_config"
+     		  action="airline_config_action"
+     		  sequence="3"
+     		  groups="freight_operation_admin"/>
+
+    <!-- Vontainer Menu -->
+    <menuitem id="container_menu"
+     		  name="Containers" 
+     		  parent="main_menu_freight_config"
+     		  action="container_config_action"
+     		  sequence="4"
+     		  groups="freight_operation_admin"/>
+
+    <!-- Menuitem freight.move.type -->
+    <!-- <menuitem id="move_type_menu"
+     		  name="Move Types" 
+     		  parent="main_menu_freight_config"
+     		  action="move_type_config_action"
+     		  sequence="5"
+     		  groups="freight_operation_admin"/> -->
+
+    <!-- meniitem for operation.price.list -->
+    <menuitem id="operation_price_list_menu"
+    		  name="Pricing List"
+    		  parent="main_menu_freight_config"
+    		  action="action_operation_price_list"
+    		  sequence="6"
+    		  groups="freight_operation_admin"/>
+</odoo>

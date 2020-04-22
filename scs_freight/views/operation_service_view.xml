@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- operation.service tree view -->
+	<record id="operation_service_tree_view" model="ir.ui.view">
+		<field name="name">operation.service.tree.view</field>
+		<field name="model">operation.service</field>
+		<field name="arch" type="xml">
+			<tree string="Services">
+				<field name="vendor_id"/>
+				<field name="product_id"/>
+				<field name="qty"/>
+				<field name="cost_price"/>
+				<field name="list_price"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- operation.service form view -->
+	<record id="operation_service_form_view" model="ir.ui.view">
+		<field name="name">operation.service.form.view</field>
+		<field name="model">operation.service</field>
+		<field name="arch" type="xml">
+			<form string="Services">
+				<sheet>
+					<group>
+						<group>
+							<field name="product_id" required="1"/>
+							<field name="qty" required="1"/>
+							<field name="uom_id"/>
+							<field name="sale_total"/>
+						</group>
+						<group>
+							<field name="vendor_id"
+								required="1"/>
+							<field name="list_price"/>
+							<field name="cost_price"/>
+							<field name="cost_total"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- Action operation.service -->
+	<record id="action_operation_service"
+			model="ir.actions.act_window">
+		<field name="name">Services</field>
+		<field name="res_model">operation.service</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<!-- Smartbutton Action Of Operation Services -->
+	<record id="action_oper_service_frieght"
+			model="ir.actions.act_window">
+		<field name="name">Services</field>
+		<field name="res_model">operation.service</field>
+		<field name="view_mode">tree,form</field>
+		<field name="domain">[('operation_id', '=', active_id)]
+		</field>
+		<field name="context">{'default_operation_id': active_id}</field>
+	</record>
+</odoo>
