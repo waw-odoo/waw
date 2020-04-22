@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<!-- Sequence for Freight Operation -->
+		<record id="seq_direct_freight_operation"
+				model="ir.sequence">
+			<field name="name">Direct Freight Operation</field>
+			<field name="code">freight.operation.direct</field>
+			<field name="prefix">DIR-</field>
+			<field name="padding">4</field>
+		</record>
+	</data>
+</odoo>
